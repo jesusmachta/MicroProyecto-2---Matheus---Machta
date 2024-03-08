@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage';
 import LogInPage from './pages/LogInPage';
 import RegisterPage from './pages/RegisterPage';
 import SearchPage from './pages/SearchPage';
+import Navbar from './pages/Navbar';
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +30,11 @@ export const router = createBrowserRouter([
     {
       path: '/club',
       element: <ClubDetails />,
+    },
+    // eliminar!!!
+    {
+      path: '/navbar',
+      element: <Navbar/>
     }
-
   ]);
   
