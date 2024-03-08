@@ -1,7 +1,9 @@
 import {InputControl} from './InputControl/InputControl'; 
 import styles from './RegisterPage.module.css'; 
 import { GoogleLoginButton } from './GoogleLoginButton';
+import {useState} from "react"; 
 export default function RegisterPage() {
+    const[values,setValues] = useState({name:"", email:"", password:""}); 
     return(
     <div className = {styles.container}>
         <div className = {styles.innerBox}>
@@ -10,7 +12,7 @@ export default function RegisterPage() {
             label="Nombre"
             placeholder ="Ingrese su nombre"
             onChange={(event)=> 
-                setvalues((prev)=> ({...prev, name: event.target.value}))
+                setValues((prev)=> ({...prev, name: event.target.value}))
             }
         />
         <InputControl
@@ -24,7 +26,7 @@ export default function RegisterPage() {
             label="Contraseña"
             placeholder="Ingrese una contraseña"
             onChange={(event) =>
-                setvalues((prev)=> ({...prev, password: event.target.value}))
+                setValues((prev)=> ({...prev, password: event.target.value}))
             }
         />
         {/* falta las funcionalidades */}
