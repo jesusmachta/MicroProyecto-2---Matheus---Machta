@@ -3,7 +3,7 @@ import styles from './RegisterPage.module.css';
 import { GoogleLoginButton } from './GoogleLoginButton';
 import {useState} from "react"; 
 export default function RegisterPage() {
-    const[values,setValues] = useState({name:"", email:"", password:""}); 
+    const[setValues] = useState({name:"", email:"", password:""}); 
     return(
     <div className = {styles.container}>
         <div className = {styles.innerBox}>
