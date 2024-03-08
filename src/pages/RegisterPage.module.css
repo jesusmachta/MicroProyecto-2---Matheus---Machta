@@ -1,0 +1,47 @@
+.container{
+    height: 100%; 
+    min-height: 100vh; 
+    width: 100%; 
+    background: linear-gradient(to right, rgb(50, 147, 215), rgb(15, 188, 15));
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.innerBox{
+    min-width: 480px; 
+    height: fit-content; 
+    width: fit-content; 
+    background-color: white;
+    box-shadow: 1px 1px 4px rgb(111, 105, 105); 
+    padding: 30px; 
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: column; 
+    gap: 30px; 
+}
+
+.fotter .error{
+    font-weight: bold; 
+    font-size: 0.9rem; 
+    color: red; 
+    text-align: center; 
+}
+
+.footer button{
+    outline: none; 
+    border: none; 
+    background-color: beige; 
+    color: rgb(46, 43, 43); 
+    border-radius: 5px;
+    font-weight: bold; 
+    font-size: 1rem; 
+    padding: 10px 16px; 
+    width: 100%; 
+    transition: 100ms; 
+    cursor: pointer; 
+}
+h1{
+    display: flex; 
+    justify-content: center;
+}
