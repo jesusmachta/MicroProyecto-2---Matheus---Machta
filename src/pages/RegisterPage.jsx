@@ -18,7 +18,7 @@ export default function Register() {
     // setJuegos(generateListGames(setJuegos)); 
 
     const navigate = useNavigate();
-    const [values, setvalues] = useState({ name: "", email: "", password: "" });
+    const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "" });
     const [errorMsg, setErrorMsg] = useState([]);
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false); 
     const registro = () => {
@@ -90,11 +90,15 @@ export default function Register() {
             }
           />
           <p> Ingrese su juego favorito: </p>
-            <Survey></Survey>
+            <Survey
+              onChange = {(event) =>
+                setvalues((prev) => ({...prev, favoriteGame: event.target.value}))
+              }
+            ></Survey>
           <div className={styles.footer}>
             <b className={styles.error}>{errorMsg}</b>
             <button onClick={registro} disabled={submitButtonDisabled}>
-              Guardar
+              Registrarse
             </button>
             <GoogleLoginButton></GoogleLoginButton>
             <button>
