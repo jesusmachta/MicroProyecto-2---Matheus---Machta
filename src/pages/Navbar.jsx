@@ -1,7 +1,4 @@
-import {Link} from 'react-router-dom'; 
-import styles from "./Navbar.module.css"
-
- 
+import logo from '../assets'
 export default function Navbar(){
     return(
         <header className={styles.container}>
@@ -15,8 +12,6 @@ export default function Navbar(){
                 <Link to="/Login">LOGIN</Link>
                 <Link to ="/search">BUSCADOR!</Link>
             </nav>
-            </div>
-            
         </header>
     )
 }
