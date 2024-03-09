@@ -9,7 +9,7 @@ import Navbar from './pages/Navbar';
 export const router = createBrowserRouter([
     {
       path: '/',
-      elemment: <LandingPage />,
+      Component: LandingPage,
     },
 
     {
