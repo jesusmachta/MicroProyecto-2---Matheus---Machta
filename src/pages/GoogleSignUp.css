@@ -1,0 +1,17 @@
+.button-google{
+    outline: none; 
+    border: none; 
+    background-color: beige; 
+    color: rgb(46, 43, 43); 
+    border-radius: 5px;
+    font-weight: bold; 
+    font-size: 1rem; 
+    padding: 10px 16px; 
+    width: 100%; 
+    transition: 100ms; 
+    cursor: pointer; 
+}
+
+.customSpan{
+    padding: 10px; 
+}
