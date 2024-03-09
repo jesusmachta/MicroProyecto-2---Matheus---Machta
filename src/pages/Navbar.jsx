@@ -10,7 +10,7 @@ export default function Navbar(){
                 <Link to="/">PÁGINA PRINCIPAL</Link>
                 <Link to="/register">REGISTRARSE</Link>
                 <Link to="/Login">LOGIN</Link>
-                <Link to ="/search">BUSCADOR!</Link>
+                <Link to ="/search">BUSCADOR</Link>
             </nav>
         </header>
     )
