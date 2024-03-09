@@ -10,7 +10,7 @@ import { GoogleSignUpButton } from "./GoogleSignUpButton";
 
 export function Login() {
   const navigate = useNavigate();
-  const [values, setValues] = useState({ email: "", pass: "" });
+  const [values, setValues] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const Iniciar = () => {
@@ -65,7 +65,7 @@ export function Login() {
         <InputControl
           label="Contraseña"
           onChange={(event) =>
-            setValues((prev) => ({ ...prev, pass: event.target.value }))
+            setValues((prev) => ({ ...prev, password: event.target.value }))
           }
           placeholder="Ingrese su contraseña"
         />

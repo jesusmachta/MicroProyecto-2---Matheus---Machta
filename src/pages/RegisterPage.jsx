@@ -5,10 +5,18 @@ import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { InputControl } from "./InputControl/InputControl";
 import {auth } from "../firebase";
 import { GoogleLoginButton } from './GoogleLoginButton';
-//import Survey from "./Survey"; 
+import Survey from "./Survey"; 
+// import { getGamesTitleHTML, getGames } from './GetGames';
+
+
 
 export default function Register() {
-    //const juegos = [" Catalina", "Jesus", "Luis"]
+    // const juegos = [" Catalina", "Jesus", "Luis"]
+    // const juegos = getGamesTitle();  
+    
+
+    // setJuegos(generateListGames(setJuegos)); 
+
     const navigate = useNavigate();
     const [values, setvalues] = useState({ name: "", email: "", password: "" });
     const [errorMsg, setErrorMsg] = useState([]);
@@ -81,6 +89,8 @@ export default function Register() {
               setvalues((prev) => ({ ...prev, password: event.target.value }))
             }
           />
+          <p> Ingrese su juego favorito: </p>
+            <Survey></Survey>
           <div className={styles.footer}>
             <b className={styles.error}>{errorMsg}</b>
             <button onClick={registro} disabled={submitButtonDisabled}>
@@ -88,8 +98,9 @@ export default function Register() {
             </button>
             <GoogleLoginButton></GoogleLoginButton>
             <button>
-                <Link to="/login"> Login</Link>
+                <Link to="/login"> Iniciar sesión</Link>
             </button>
+            
           </div>
         </div>
       </div>
