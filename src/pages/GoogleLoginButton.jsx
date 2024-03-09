@@ -17,7 +17,7 @@ export function GoogleLoginButton(){
             alt="Google Icon"
             style={{width: '15px', height:'15px'}}
             />
-            <span>    Iniciar Sesión con Google</span>
+            <span>    Registrate con Google</span>
 
         </button>
     )
