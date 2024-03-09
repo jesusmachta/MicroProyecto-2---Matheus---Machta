@@ -2,8 +2,10 @@ import {InputControl} from './InputControl/InputControl';
 import styles from './RegisterPage.module.css'; 
 import { GoogleLoginButton } from './GoogleLoginButton';
 import {useState} from "react"; 
+import { Link } from "react-router-dom";
+
 export default function RegisterPage() {
-    const[values,setValues] = useState({name:"", email:"", password:""}); 
+    const[setValues] = useState({name:"", email:"", password:""}); 
     return(
     <div className = {styles.container}>
         <div className = {styles.innerBox}>
@@ -29,10 +31,13 @@ export default function RegisterPage() {
                 setValues((prev)=> ({...prev, password: event.target.value}))
             }
         />
-        {/* falta las funcionalidades */}
+        
         <button>Registrarse</button>
         <GoogleLoginButton></GoogleLoginButton>
-        <button>Login</button>
+        <button>
+            <Link to="/login"> Login</Link>
+        </button>
+        
         </div>
     </div>)
     

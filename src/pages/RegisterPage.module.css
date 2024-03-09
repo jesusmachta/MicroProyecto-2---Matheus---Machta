@@ -28,10 +28,10 @@
     text-align: center; 
 }
 
-.footer button{
+button{
     outline: none; 
     border: none; 
-    background-color: beige; 
+    background-color: rgb(133, 187, 133); 
     color: rgb(46, 43, 43); 
     border-radius: 5px;
     font-weight: bold; 
@@ -44,4 +44,8 @@
 h1{
     display: flex; 
     justify-content: center;
+}
+a{
+    text-decoration: none; 
+    color: black; 
 }
