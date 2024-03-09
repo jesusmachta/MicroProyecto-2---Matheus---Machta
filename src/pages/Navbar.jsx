@@ -11,9 +11,11 @@ export default function Navbar(){
             <div className = {styles.secondDiv}>
             <nav className={styles.navigation}>
                 <Link to="/">PÁGINA PRINCIPAL</Link>
-                <Link to="/register">REGISTRARSE</Link>
-                <Link to="/Login">LOGIN</Link>
+                {/* <Link to="/register">REGISTRARSE</Link>
+                <Link to="/Login">LOGIN</Link> */}
                 <Link to ="/search">BUSCADOR </Link>
+                <Link to ="/profile">PERFIL</Link>
+
             </nav>
             </div>
             

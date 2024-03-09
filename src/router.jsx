@@ -5,6 +5,7 @@ import LogInPage from './pages/LogInPage';
 import RegisterPage from './pages/RegisterPage';
 import SearchPage from './pages/SearchPage';
 import Navbar from './pages/Navbar'; 
+import Perfil from './pages/Perfil'; 
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       path: '/navbar', 
       element: <Navbar/>,
 
+    },
+    {
+      path: '/profile', 
+      element: <Perfil/>
     }
 
   ]);
