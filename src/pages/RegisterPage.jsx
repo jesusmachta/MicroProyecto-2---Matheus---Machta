@@ -17,6 +17,7 @@ export default function Register() {
     const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "The Witcher 3: Wild Hunt" });
     const [errorMsg, setErrorMsg] = useState([]);
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false); 
+    const defaultValue = "The Witcher 3: Wild Hunt"; 
    
     const registro = () => {
       if (!values.name || !values.email || !values.password ) {
@@ -102,6 +103,7 @@ export default function Register() {
           />
           <p> Ingrese su juego favorito: </p>
             <Survey setvalues={setvalues}
+            defaultValue={defaultValue}
             
               // onChange = {(event) =>
               //   setvalues((prev) => ({...prev, favoriteGame: selectedTitle}))

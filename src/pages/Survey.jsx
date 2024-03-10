@@ -3,7 +3,7 @@ import { getGamesTitle } from './GetGames';
 
 
 
-export default function Survey({setvalues}){
+export default function Survey({setvalues, defaultValue}){
   const [titles, setTitles] = useState([]); 
   useEffect(() => {
     async function fetchTitles() {
@@ -26,7 +26,7 @@ export default function Survey({setvalues}){
   };
 
   return (
-    <select onChange = {handleTitleChange}>
+    <select onChange = {handleTitleChange} value={defaultValue}>
       {titles.map((title, index) => (
         <option key={index} value={title}>
           {title}

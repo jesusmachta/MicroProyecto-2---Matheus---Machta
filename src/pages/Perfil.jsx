@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { collection,  where, query, getDocs } from "firebase/firestore"; 
 import { UserContext, useUser } from "../context/user";
 import { UpdateUserComponent } from "../controllers/usuarios";
+import Survey from "./Survey";
 
 export default function Perfil() {
   const userL = useUser(); 
@@ -17,6 +18,7 @@ export default function Perfil() {
   const [userFavoriteGame, setUserFavoriteGame] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const[datosCargados, setDatosCargados] = useState(false); 
+  const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "The Witcher 3: Wild Hunt" });
 
   useEffect(()=>{
     if(userL){
@@ -46,7 +48,8 @@ export default function Perfil() {
   }
 
   const handleUpdate = () => {
-    UpdateUserComponent({ id: userid, email: userEmail, favoriteGame: userFavoriteGame, name: userName, userL });
+        setUserFavoriteGame(values.favoriteGame); 
+    UpdateUserComponent({ id: userid, email: userEmail, userFavoriteGame,  name: userName, userL });
   };
 
   if(datosCargados){
@@ -72,12 +75,16 @@ export default function Perfil() {
             }
           ></InputControl>
           <h2>Juego favorito</h2>
-          <InputControl
+          <Survey
+                setvalues={setvalues}
+                defaultValue ={userFavoriteGame}
+          />
+          {/* <InputControl
             placeholder = {userFavoriteGame}
             onChange ={(event)=>
               setUserFavoriteGame(event.target.value)
             }
-          ></InputControl>
+          ></InputControl> */}
           <h2>Contraseña</h2>
           <InputControl
             placeholder = {userPassword}
