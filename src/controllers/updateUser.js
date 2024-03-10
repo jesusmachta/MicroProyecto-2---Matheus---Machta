@@ -12,14 +12,17 @@ export async function UpdateUserFunction({ id, email, favoriteGame, name, passwo
       console.log(favoriteGame); 
       if(favoriteGameRef !== null){
         favoriteGame = favoriteGameRef; 
+        console.log(favoriteGame); 
       }
 
       if(emailRef !== null && emailRef.length >0 ){
         email = emailRef; 
+        
       }
 
       if(nameRef !== null && nameRef.length > 0){
         name = nameRef; 
+        console.log(name); 
       }
 
       if(passwordRef !== null && passwordRef.length >0){
@@ -31,20 +34,9 @@ export async function UpdateUserFunction({ id, email, favoriteGame, name, passwo
           name, 
           password, 
       }); 
+      console.log("Se logro cambiar los datos en la base de datos"); 
 
-      try{
-          if(email){
-              await updateEmail(userL, email); 
-              await sendEmailVerification(userL); 
-          }
-
-          await updateProfile(userL, {
-              displayName: name 
-          }); 
-          console.log("Se logró actualizar con éxito en la base de datos y en el auth"); 
-      }catch(error){
-          console.log("No se logró actualizar con éxito: ", error); 
-      }
+     
     
 
  

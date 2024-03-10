@@ -94,8 +94,9 @@ export default function Perfil() {
         <div>
           <h1>TU PERFIL</h1>
         </div>
+        <h2 className={styles.editables}>Campos editables*</h2>
         <div className={styles.containerInfo}>
-          <h2>Nombre: </h2>
+          <h2>*Nombre: </h2>
           <InputControl2
             placeholder = {userName}
         //     onChange = {(event) => 
@@ -103,6 +104,7 @@ export default function Perfil() {
         
         //     }
           ref = {nameRef}
+          readOnly = {false}
           ></InputControl2>
           <h2>Correo: </h2>
           <InputControl2
@@ -111,8 +113,9 @@ export default function Perfil() {
         //       setUserEmail(event.target.value)
         //     }
         ref = {emailRef}
+        readOnly = {true}
           ></InputControl2>
-          <h2>Juego favorito</h2>
+          <h2>*Juego favorito</h2>
           <Survey2
                 setvalues={setvalues}
                 defaultValue ={userFavoriteGame}
@@ -130,7 +133,7 @@ export default function Perfil() {
         //     onChange ={(event)=>
         //       setUserPassword(event.target.value)
         //     }
-
+        readOnly = {true}
         ref = {passwordRef}
           ></InputControl2>
           <div className={styles.containerBotones}>

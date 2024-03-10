@@ -55,3 +55,8 @@ h2{
 .botonDer{
     margin-left: 200px;
 }
+
+.editables{
+    display: flex;
+    justify-content: center;
+}
