@@ -1,10 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./ClubDetail.module.css";
 import VideoJuegoDetail from "./VideoJuegoDetail";
 import Navbar from "../pages/Navbar";
+import { addSubscriptionFunction } from "../controllers/addSubscription";
+import { useUser } from "../context/user";
+import { useNavigate } from "react-router-dom";
+import { collection, where, query, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 export default function ClubDetail({ club }) {
+  const userL = useUser(); 
+  const [userid, setUserid] = useState(null); 
   const [selectedVideojuego, setSelectedVideojuego] = useState(null);
+  const nav = useNavigate();
+  const [datosCargados, setDatosCargados] = useState(false); 
+  const [userEmail, setUserEmail] = useState(null);
+  useEffect(()=>{
+    if (userL) {
+      setUserEmail(userL.email);
+      console.log("Correo: "); 
+      console.log(userL.email); 
+    }
+    const findUser = async() =>{
+      console.log("Se estan cargando los datos"); 
+      try {
+        const querySnapshot = await getDocs(
+          query(collection(db, "Usuarios"), where("email", "==", userEmail))
+        );
+        console.log("snapshot"); 
+        querySnapshot.forEach((doc) => {
+          setUserid(doc.id); //la info que esta en el doc
+          console.log("Usuario encontrado"); 
+          setDatosCargados(true); 
+          console.log("despues de datos cardos = true"); 
+
+        });
+      } catch (error) {
+        console.log("Error buscando el doc: ", error);
+      }
+    };findUser(); 
+  } ,[nav] );
+
+  const update =() =>{
+    console.log("eNTRO EN EL UPDATE PARA AGREGAR SUB"); 
+    if(datosCargados){
+      addSubscriptionFunction(userid,club.nombre);  
+      console.log("Unirse al club");
+    }else{
+      console.log("Los datos todavía no estan cargados"); 
+    }
+    
+    
+  };
 
   if (selectedVideojuego) {
     return <VideoJuegoDetail videojuego={selectedVideojuego} />;
@@ -32,7 +79,7 @@ export default function ClubDetail({ club }) {
         ))}
       </div>
 
-      <button className={styles.joinButton} onClick={handleJoin}>
+      <button className={styles.joinButton} onClick={update}>
         Unirse al club
       </button>
     </div>
