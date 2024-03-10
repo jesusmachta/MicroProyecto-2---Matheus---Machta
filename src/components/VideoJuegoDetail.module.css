@@ -1,0 +1,11 @@
+.root {
+    background: linear-gradient(to bottom,  rgb(90, 84, 84), rgb(255, 156, 156));
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .nombre {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  

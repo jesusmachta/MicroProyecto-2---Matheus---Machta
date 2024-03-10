@@ -1,16 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
-import ClubDetails from './pages/ClubDetails';
-import LandingPage from './pages/LandingPage';
+import Club from './components/Club';
 import LogInPage from './pages/LogInPage';
 import RegisterPage from './pages/RegisterPage';
-import SearchPage from './pages/SearchPage';
 import Navbar from './pages/Navbar'; 
 import Perfil from './pages/Perfil'; 
+import Card from './components/Card';
 
 export const router = createBrowserRouter([
     {
       path: '/',
-      Component: LandingPage,
+      element: <Club />,
     },
 
     {
@@ -24,13 +23,8 @@ export const router = createBrowserRouter([
     },
 
     {
-      path: '/search',
-      element: <SearchPage />,
-    },
-
-    {
       path: '/club',
-      element: <ClubDetails />,
+      element: <Club />,
     },
     {
       path: '/navbar', 
@@ -40,6 +34,10 @@ export const router = createBrowserRouter([
     {
       path: '/profile', 
       element: <Perfil/>
+    },
+    {
+      path: '/search',
+      Component: Card,
     }
 
   ]);
