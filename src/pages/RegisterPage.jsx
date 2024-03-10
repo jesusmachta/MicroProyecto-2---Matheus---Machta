@@ -41,6 +41,7 @@ export default function Register() {
             
           });
           console.log(values); 
+          
           saveUser(values); 
            
 

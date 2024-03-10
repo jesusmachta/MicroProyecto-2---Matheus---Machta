@@ -18,7 +18,7 @@ export default function Perfil() {
   const [userFavoriteGame, setUserFavoriteGame] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const[datosCargados, setDatosCargados] = useState(false); 
-  const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "The Witcher 3: Wild Hunt" });
+  const [values, setvalues] = useState({ name: "", email: "",favoriteGame: "The Witcher 3: Wild Hunt" });
 
   const favoriteGameRef = useRef();
   const nameRef = useRef();
@@ -48,7 +48,7 @@ export default function Perfil() {
           console.log("juego favorito"); 
           console.log(userFavoriteGame); 
           console.log(typeof userFavoriteGame); 
-          setUserPassword(doc.data().password);
+          setUserPassword("*******");
           setDatosCargados(true); 
         });  
       }catch(error){
@@ -72,7 +72,7 @@ export default function Perfil() {
         const passRef = passwordRef.current.value; 
   
         if (favRef !== '' || mailRef !== '' || nombreRef !== '' || passRef !== ''){
-                UpdateUserFunction({ id: userid, email: userEmail, favoriteGame: userFavoriteGame,  name: userName, password: userPassword, userL: userL, favoriteGameRef: favRef, emailRef: mailRef, nameRef: nombreRef, passwordRef: passRef}); 
+                UpdateUserFunction({ id: userid, email: userEmail, favoriteGame: userFavoriteGame,  name: userName, userL: userL, favoriteGameRef: favRef, emailRef: mailRef, nameRef: nombreRef}); 
         }
        
 

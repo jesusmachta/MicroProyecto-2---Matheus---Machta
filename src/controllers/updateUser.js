@@ -4,7 +4,7 @@ import {db} from '../firebase';
 // import { useUser } from "../context/user";
 import { updateEmail, updateProfile, sendEmailVerification } from "firebase/auth";
 
-export async function UpdateUserFunction({ id, email, favoriteGame, name, password, userL, favoriteGameRef, emailRef, nameRef, passwordRef }) {
+export async function UpdateUserFunction({ id, email, favoriteGame, name,  userL, favoriteGameRef, emailRef, nameRef }) {
 
 
       const usersCollection = collection(db, "Usuarios"); 
@@ -25,14 +25,12 @@ export async function UpdateUserFunction({ id, email, favoriteGame, name, passwo
         console.log(name); 
       }
 
-      if(passwordRef !== null && passwordRef.length >0){
-        password = passwordRef; 
-      }
+    
       await updateDoc(doc(usersCollection, id),{
           email, 
           favoriteGame, 
           name, 
-          password, 
+           
       }); 
       window.location.reload(); 
       console.log("Se logro cambiar los datos en la base de datos"); 

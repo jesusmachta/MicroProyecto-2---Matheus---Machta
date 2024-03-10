@@ -16,7 +16,10 @@ export function GoogleLoginButton(){
                 email: userEmail,
                 favoriteGame: favoriteGame, 
                 name: name, 
-                password: password,  
+                subscriptions: [""],  
+                lastName: "", 
+                username: "", 
+
             }
             saveUser(usuario); 
             Navigate('/profile'); 
