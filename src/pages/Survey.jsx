@@ -1,10 +1,10 @@
-import {useState, useEffect} from 'react'; 
-import { getGamesTitle } from './GetGames';
+import { useState, useEffect } from "react";
+import { getGamesTitle } from "./GetGames";
 
+export default function Survey({ setvalues, defaultValue }) {
+  const [titles, setTitles] = useState([]);
 
-
-export default function Survey({setvalues, defaultValue}){
-  const [titles, setTitles] = useState([]); 
+  // Cuando el componente se monta, obtiene los títulos de los juegos
   useEffect(() => {
     async function fetchTitles() {
       const response = await getGamesTitle();
@@ -13,20 +13,15 @@ export default function Survey({setvalues, defaultValue}){
 
     fetchTitles();
   }, []);
-  const handleTitleChange=(event) =>{
 
-    setvalues((prev)=>({...prev, favoriteGame: event.target.value,})); 
-    // const selectedTitle = event.target.value;
-
-    // console.log(event.target.value) ; 
-
-    // setSelectedTitle=(selectedTitle); 
-    // const getTitle = [setSelectedTitle]; 
-    // getTitle(setSelectedTitle); 
+  // Cuando el usuario selecciona un juego, actualiza el estado `favoriteGame` en `Register`
+  const handleTitleChange = (event) => {
+    setvalues((prev) => ({ ...prev, favoriteGame: event.target.value }));
   };
 
+  // Renderiza un dropdown con los títulos de los juegos
   return (
-    <select onChange = {handleTitleChange} value={defaultValue}>
+    <select onChange={handleTitleChange} value={defaultValue}>
       {titles.map((title, index) => (
         <option key={index} value={title}>
           {title}
@@ -34,7 +29,4 @@ export default function Survey({setvalues, defaultValue}){
       ))}
     </select>
   );
-
-
 }
-

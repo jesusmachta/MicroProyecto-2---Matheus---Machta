@@ -1,9 +1,8 @@
-// Card.jsx
-import { useState, useEffect } from 'react';
-import styles from './Club.module.css';
+import { useState, useEffect } from "react";
+import styles from "./Club.module.css";
 import { getClub } from "../controllers/clubes";
-import Navbar from '../pages/Navbar';
-import ClubDetail from './ClubDetail';
+import Navbar from "../pages/Navbar";
+import ClubDetail from "./ClubDetail";
 
 export default function Card() {
   const [clubes, setClubes] = useState([]);
@@ -25,18 +24,34 @@ export default function Card() {
 
   return (
     <div className={styles.root}>
-      <Navbar/>
-      <input className={styles.search} type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Buscar club..." />
-      <div className={styles['cards-container']}>
-        {clubes.filter(club => club.nombre ? club.nombre.toLowerCase().includes(search.toLowerCase()) : false).map((club) => (
-          <div key={club.id} className={styles.card} onClick={() => setSelectedClub(club)}>
-            <img src={`/${club.id}.png`} alt={club.nombre} />
-            <div>
-              <div className={styles.nombre}>{club.nombre}</div>
-              <div className={styles.descripcion}>{club.descripcion}</div>
+      <Navbar />
+      <input
+        className={styles.search}
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Buscar club..."
+      />
+      <div className={styles["cards-container"]}>
+        {clubes
+          .filter((club) =>
+            club.nombre
+              ? club.nombre.toLowerCase().includes(search.toLowerCase())
+              : false
+          )
+          .map((club) => (
+            <div
+              key={club.id}
+              className={styles.card}
+              onClick={() => setSelectedClub(club)}
+            >
+              {/* <img src={`/${club.id}.png`} alt={club.nombre} /> */}
+              <div>
+                <div className={styles.nombre}>{club.nombre}</div>
+                <div className={styles.descripcion}>{club.descripcion}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

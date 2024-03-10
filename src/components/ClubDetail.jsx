@@ -26,11 +26,7 @@ export default function ClubDetail({ club }) {
 
       <div className={styles["cards-container"]}>
         {club.videojuegos.map((videojuego) => (
-          <div
-            key={videojuego}
-            className={styles.card}
-            onClick={() => setSelectedVideojuego(videojuego)}
-          >
+          <div key={videojuego} className={styles.card}>
             <img src={`/${videojuego}.png`} alt={videojuego} />
           </div>
         ))}

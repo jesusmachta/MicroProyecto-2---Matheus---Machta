@@ -1,9 +1,9 @@
-import React, { useState, useEffect, forwardRef } from 'react';
-import { getGamesTitle } from './GetGames';
+import React, { useState, useEffect, forwardRef } from "react";
+import { getGamesTitle } from "./GetGames";
 
 const Survey2 = forwardRef(({ setvalues, defaultValue }, ref) => {
   const [titles, setTitles] = useState([]);
-  const [selectedValue, setSelectedValue] = useState(defaultValue); 
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
 
   useEffect(() => {
     async function fetchTitles() {
@@ -15,7 +15,7 @@ const Survey2 = forwardRef(({ setvalues, defaultValue }, ref) => {
   }, []);
 
   const handleTitleChange = (event) => {
-    setSelectedValue(event.target.value); 
+    setSelectedValue(event.target.value);
     setvalues((prev) => ({ ...prev, favoriteGame: selectedValue }));
   };
 
