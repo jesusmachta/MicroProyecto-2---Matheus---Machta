@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {collection,  where, query, getDocs} from "firebase/firestore"; 
 import { UserContext, useUser } from "../context/user";
+import { updateUser } from "../controllers/usuarios";
 // import {firestore} from 'firebase'; 
 
 export default function Perfil() {
-        // const[user, setUser] = useState(null);
+        // const[userOriginalEmail, setUserOriginalEmail] = useState(null);// el correo original del usuario por si desea cambiar tener como actualizar en auth
         const userL = useUser(); 
         console.log(userL); 
         const [userEmail, setUserEmail] = useState(null);  
@@ -19,11 +20,20 @@ export default function Perfil() {
         const [userPassword, setUserPassword] = useState(null);
         const [userFavoriteGame, setUserFavoriteGame] = useState(null);
         const[datosCargados, setDatosCargados] = useState(false); 
+        const handleUpdate = async()=> {
+                console.log("Datos usuarios: ")
+                console.log(userEmail); 
+                console.log(userName); 
+                console.log(userFavoriteGame); 
+
+                await updateUser(userid, {userEmail, userFavoriteGame, userName}); 
+        }; 
 
         useEffect(()=>{
                 
                 if(userL){
-                        setUserEmail(userL.email); 
+                        setUserEmail(userL.email);
+                        // setUserOriginalEmail(userL.email);  
                         
                 }
 
@@ -98,7 +108,7 @@ if(datosCargados){
                 <h2>Juego favorito</h2>
                 <div className={styles.containerBotones}>
                 <button onClick = {logOut} className={styles.botonIzq}>Cerrar sesión</button>
-                <button className={styles.botonDer}>Guardar Cambios</button>{" "}
+                <button onClick = {handleUpdate} className={styles.botonDer}>Guardar Cambios</button>{" "}
                 </div>
                  
                 </div>
