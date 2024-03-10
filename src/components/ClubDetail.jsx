@@ -3,54 +3,92 @@ import PropTypes from "prop-types";
 import styles from "./ClubDetail.module.css";
 import VideoJuegoDetail from "./VideoJuegoDetail";
 import Navbar from "../pages/Navbar";
-import { addSubscriptionFunction } from "../controllers/addSubscription";
+import {
+  addSubscriptionFunction,
+  removeSubscriptionFunction,
+} from "../controllers/addSubscription";
 import { useUser } from "../context/user";
 import { useNavigate } from "react-router-dom";
-import { collection, where, query, getDocs } from "firebase/firestore";
+import {
+  collection,
+  where,
+  query,
+  getDocs,
+  getFirestore,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
+
 export default function ClubDetail({ club }) {
-  const userL = useUser(); 
-  const [userid, setUserid] = useState(null); 
+  const userL = useUser();
+  const [userid, setUserid] = useState(null);
   const [selectedVideojuego, setSelectedVideojuego] = useState(null);
   const nav = useNavigate();
-  const [datosCargados, setDatosCargados] = useState(false); 
+  const [datosCargados, setDatosCargados] = useState(false);
   const [userEmail, setUserEmail] = useState(null);
-  useEffect(()=>{
+  const [userSubscriptions, setUserSubscriptions] = useState([]);
+
+  useEffect(() => {
     if (userL) {
       setUserEmail(userL.email);
-      console.log("Correo: "); 
-      console.log(userL.email); 
+      console.log("Correo: ");
+      console.log(userL.email);
     }
-    const findUser = async() =>{
-      console.log("Se estan cargando los datos"); 
+    const findUser = async () => {
+      console.log("Se estan cargando los datos");
       try {
         const querySnapshot = await getDocs(
           query(collection(db, "Usuarios"), where("email", "==", userEmail))
         );
-        console.log("snapshot"); 
+        console.log("snapshot");
         querySnapshot.forEach((doc) => {
           setUserid(doc.id); //la info que esta en el doc
-          console.log("Usuario encontrado"); 
-          setDatosCargados(true); 
-          console.log("despues de datos cardos = true"); 
-
+          console.log("Usuario encontrado");
+          setDatosCargados(true);
+          console.log("despues de datos cardos = true");
         });
       } catch (error) {
         console.log("Error buscando el doc: ", error);
       }
-    };findUser(); 
-  } ,[nav] );
+    };
+    findUser();
+  }, [nav, userEmail, userL]);
 
-  const update =() =>{
-    console.log("eNTRO EN EL UPDATE PARA AGREGAR SUB"); 
-    if(datosCargados){
-      addSubscriptionFunction(userid,club.nombre);  
+  useEffect(() => {
+    const fetchData = async () => {
+      const db = getFirestore();
+      const userRef = doc(db, "Usuarios", userid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
+        setUserSubscriptions(userData.subscriptions);
+        setDatosCargados(true);
+      }
+    };
+
+    fetchData();
+  }, [userid]);
+
+  const update = () => {
+    console.log("eNTRO EN EL UPDATE PARA AGREGAR SUB");
+    if (datosCargados) {
+      addSubscriptionFunction(userid, club.nombre);
       console.log("Unirse al club");
-    }else{
-      console.log("Los datos todavía no estan cargados"); 
+    } else {
+      console.log("Los datos todavía no estan cargados");
     }
-    
-    
+  };
+
+  const leave = () => {
+    console.log("Saliendo del club");
+    if (datosCargados) {
+      removeSubscriptionFunction(userid, club.nombre);
+      console.log("Salir del club");
+    } else {
+      console.log("Los datos todavía no estan cargados");
+    }
   };
 
   if (selectedVideojuego) {
@@ -60,6 +98,10 @@ export default function ClubDetail({ club }) {
   const handleJoin = () => {
     console.log("Unirse al club");
   };
+
+  const isMember = userSubscriptions.find(
+    (subscription) => subscription.nombre === club.nombre
+  );
 
   return (
     <div className={styles.root}>
@@ -79,9 +121,15 @@ export default function ClubDetail({ club }) {
         ))}
       </div>
 
-      <button className={styles.joinButton} onClick={update}>
-        Unirse al club
-      </button>
+      {isMember ? (
+        <button className={styles.leaveButton} onClick={leave}>
+          Salir del club
+        </button>
+      ) : (
+        <button className={styles.joinButton} onClick={update}>
+          Unirse al club
+        </button>
+      )}
     </div>
   );
 }
