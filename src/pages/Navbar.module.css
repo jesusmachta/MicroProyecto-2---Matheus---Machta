@@ -1,7 +1,9 @@
 .container{
     background-color: rgb(90, 84, 84); 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
  }
 
  .container div{
@@ -18,7 +20,7 @@
 
  .navigation{
     display: flex; 
-    justify-content: space-between;
+    justify-content: space-around;
  }
 
  .navigation a{

@@ -49,3 +49,20 @@ p{
   align-items: center;
   text-align: center;
 }
+
+.joinButton {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 20px auto;
+  background-color: #90ff58;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.joinButton:hover {
+  background: linear-gradient(to right, rgb(170, 220, 255), rgb(170, 254, 170));
+}
