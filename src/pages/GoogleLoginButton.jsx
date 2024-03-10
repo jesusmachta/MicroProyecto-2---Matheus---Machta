@@ -1,10 +1,30 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
+import { saveUser } from "./GuardarUsuarioDB";
+import { Navigate } from "react-router-dom";
 export function GoogleLoginButton(){
     const signinWithGoogle = async () =>{
         try{
             const result = await signInWithPopup(auth, googleProvider);
+            const userCredential = result.user; 
+            // datos del usuario: 
+            const userEmail = userCredential.email; 
+            const name = userCredential.displayName; 
+            const password = "********"; 
+            const favoriteGame = "The Witcher 3: Wild Hunt"; 
+            const usuario ={
+                email: userEmail,
+                favoriteGame: favoriteGame, 
+                name: name, 
+                password: password,  
+            }
+            saveUser(usuario); 
+            Navigate('/profile'); 
+
+
+            // auth, values.email, values.password, values.favoriteGame
             console.log(result);
+            
         }catch (error){
             console.error(error);
         }

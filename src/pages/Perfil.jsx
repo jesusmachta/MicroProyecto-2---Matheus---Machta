@@ -70,24 +70,13 @@ export default function Perfil() {
         const mailRef = emailRef.current.value; 
         const nombreRef = nameRef.current.value; 
         const passRef = passwordRef.current.value; 
-        // console.log("password en update"); 
-        // console.log(passRef); 
+  
         if (favRef !== '' || mailRef !== '' || nombreRef !== '' || passRef !== ''){
                 UpdateUserFunction({ id: userid, email: userEmail, favoriteGame: userFavoriteGame,  name: userName, password: userPassword, userL: userL, favoriteGameRef: favRef, emailRef: mailRef, nameRef: nombreRef, passwordRef: passRef}); 
         }
        
-        
-
-
-
-
 
   }
-
-//   const handleUpdate = () => {
-        
-//     UpdateUserComponent({ id: userid, email: userEmail, userFavoriteGame,  name: userName, userL });
-//   };
 
   if(datosCargados){
     return (
@@ -101,19 +90,14 @@ export default function Perfil() {
           <h2>*Nombre: </h2>
           <InputControl2
             placeholder = {userName}
-        //     onChange = {(event) => 
-        //       setUserName(event.target.value)
-        
-        //     }
+      
           ref = {nameRef}
           readOnly = {false}
           ></InputControl2>
           <h2>Correo: </h2>
           <InputControl2
             placeholder = {userEmail}
-        //     onChange ={(event)=>
-        //       setUserEmail(event.target.value)
-        //     }
+   
         ref = {emailRef}
         readOnly = {true}
           ></InputControl2>
@@ -123,18 +107,11 @@ export default function Perfil() {
                 defaultValue ={userFavoriteGame}
                 ref = {favoriteGameRef}
           />
-          {/* <InputControl
-            placeholder = {userFavoriteGame}
-            onChange ={(event)=>
-              setUserFavoriteGame(event.target.value)
-            }
-          ></InputControl> */}
+         
           <h2>Contraseña</h2>
           <InputControl2
             placeholder = {userPassword}
-        //     onChange ={(event)=>
-        //       setUserPassword(event.target.value)
-        //     }
+       
         readOnly = {true}
         ref = {passwordRef}
           ></InputControl2>

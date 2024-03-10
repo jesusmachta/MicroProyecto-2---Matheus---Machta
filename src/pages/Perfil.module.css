@@ -47,6 +47,7 @@ h2{
 .containerBotones{
    display: flex; 
    justify-content: space-between; 
+   margin: 20px; 
 }
 
 .botonIzq{
@@ -59,4 +60,5 @@ h2{
 .editables{
     display: flex;
     justify-content: center;
+    font-size: 15px;
 }
