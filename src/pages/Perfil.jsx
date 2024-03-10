@@ -65,6 +65,8 @@ export default function Perfil() {
 
   const update =() => {
         const favRef = favoriteGameRef.current.value; 
+        console.log("Nuevo juego"); 
+        console.log(favRef); 
         const mailRef = emailRef.current.value; 
         const nombreRef = nameRef.current.value; 
         const passRef = passwordRef.current.value; 
@@ -74,7 +76,7 @@ export default function Perfil() {
                 UpdateUserFunction({ id: userid, email: userEmail, favoriteGame: userFavoriteGame,  name: userName, password: userPassword, userL: userL, favoriteGameRef: favRef, emailRef: mailRef, nameRef: nombreRef, passwordRef: passRef}); 
         }
        
-
+        
 
 
 

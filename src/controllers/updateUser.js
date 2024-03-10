@@ -34,6 +34,7 @@ export async function UpdateUserFunction({ id, email, favoriteGame, name, passwo
           name, 
           password, 
       }); 
+      window.location.reload(); 
       console.log("Se logro cambiar los datos en la base de datos"); 
 
      

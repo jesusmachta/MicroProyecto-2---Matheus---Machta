@@ -3,6 +3,7 @@ import { getGamesTitle } from './GetGames';
 
 const Survey2 = forwardRef(({ setvalues, defaultValue }, ref) => {
   const [titles, setTitles] = useState([]);
+  const [selectedValue, setSelectedValue] = useState(defaultValue); 
 
   useEffect(() => {
     async function fetchTitles() {
@@ -14,11 +15,12 @@ const Survey2 = forwardRef(({ setvalues, defaultValue }, ref) => {
   }, []);
 
   const handleTitleChange = (event) => {
-    setvalues((prev) => ({ ...prev, favoriteGame: event.target.value }));
+    setSelectedValue(event.target.value); 
+    setvalues((prev) => ({ ...prev, favoriteGame: selectedValue }));
   };
 
   return (
-    <select onChange={handleTitleChange} value={defaultValue} ref={ref}>
+    <select onChange={handleTitleChange} value={selectedValue} ref={ref}>
       {titles.map((title, index) => (
         <option key={index} value={title}>
           {title}
