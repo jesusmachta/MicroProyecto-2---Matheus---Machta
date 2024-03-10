@@ -2,7 +2,7 @@
 import { collection, updateDoc, doc} from "firebase/firestore";
 import {db} from '../firebase'; 
 // import { useUser } from "../context/user";
-import { updateEmail, updateProfile } from "firebase/auth";
+import { updateEmail, updateProfile, sendEmailVerification } from "firebase/auth";
 
 export async function UpdateUserFunction({ id, email, favoriteGame, name, password, userL, favoriteGameRef, emailRef, nameRef, passwordRef }) {
 
@@ -14,15 +14,15 @@ export async function UpdateUserFunction({ id, email, favoriteGame, name, passwo
         favoriteGame = favoriteGameRef; 
       }
 
-      if(emailRef !== null){
+      if(emailRef !== null && emailRef.length >0 ){
         email = emailRef; 
       }
 
-      if(nameRef !== null){
+      if(nameRef !== null && nameRef.length > 0){
         name = nameRef; 
       }
 
-      if(passwordRef !== null){
+      if(passwordRef !== null && passwordRef.length >0){
         password = passwordRef; 
       }
       await updateDoc(doc(usersCollection, id),{
@@ -35,6 +35,7 @@ export async function UpdateUserFunction({ id, email, favoriteGame, name, passwo
       try{
           if(email){
               await updateEmail(userL, email); 
+              await sendEmailVerification(userL); 
           }
 
           await updateProfile(userL, {
