@@ -1,13 +1,12 @@
 import Navbar from "./Navbar";
-import { InputControl } from "../pages/InputControl/InputControl";
+import { InputControl2 } from "../pages/InputControl/InputControl2";
 import styles from "./Perfil.module.css"; 
 import { auth, db } from "../firebase"; 
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { collection,  where, query, getDocs } from "firebase/firestore"; 
 import { UserContext, useUser } from "../context/user";
-import { UpdateUserComponent } from "../controllers/usuarios";
-import Survey from "./Survey";
+import Survey2 from "./Surevy2";
 import { UpdateUserFunction } from "../controllers/updateUser";
 
 export default function Perfil() {
@@ -21,6 +20,19 @@ export default function Perfil() {
   const[datosCargados, setDatosCargados] = useState(false); 
   const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "The Witcher 3: Wild Hunt" });
 
+  const favoriteGameRef = useRef();
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+
+
+//   const handleSaveChanges =()=>{
+//         setUserFavoriteGame(values.favoriteGame); 
+//         UpdateUserFunction(userid, userEmail, userFavoriteGame, userName); 
+
+//   }
+
   useEffect(()=>{
     if(userL){
       setUserEmail(userL.email);
@@ -30,9 +42,12 @@ export default function Perfil() {
       try{
         const querySnapshot = await getDocs(query(collection(db, "Usuarios"), where('email','==', userEmail))); 
         querySnapshot.forEach((doc) =>{
-          setUserid(doc.id); 
+          setUserid(doc.id); //la info que esta en el doc
           setUserName(doc.data().name); 
           setUserFavoriteGame(doc.data().favoriteGame); 
+          console.log("juego favorito"); 
+          console.log(userFavoriteGame); 
+          console.log(typeof userFavoriteGame); 
           setUserPassword(doc.data().password);
           setDatosCargados(true); 
         });  
@@ -48,8 +63,27 @@ export default function Perfil() {
     nav("/register"); 
   }
 
+  const update =() => {
+        const favRef = favoriteGameRef.current.value; 
+        const mailRef = emailRef.current.value; 
+        const nombreRef = nameRef.current.value; 
+        const passRef = passwordRef.current.value; 
+        // console.log("password en update"); 
+        // console.log(passRef); 
+        if (favRef !== '' || mailRef !== '' || nombreRef !== '' || passRef !== ''){
+                UpdateUserFunction({ id: userid, email: userEmail, favoriteGame: userFavoriteGame,  name: userName, password: userPassword, userL: userL, favoriteGameRef: favRef, emailRef: mailRef, nameRef: nombreRef, passwordRef: passRef}); 
+        }
+       
+
+
+
+
+
+
+  }
+
 //   const handleUpdate = () => {
-        setUserFavoriteGame(values.favoriteGame); 
+        
 //     UpdateUserComponent({ id: userid, email: userEmail, userFavoriteGame,  name: userName, userL });
 //   };
 
@@ -62,23 +96,27 @@ export default function Perfil() {
         </div>
         <div className={styles.containerInfo}>
           <h2>Nombre: </h2>
-          <InputControl
+          <InputControl2
             placeholder = {userName}
-            onChange = {(event) => 
-              setUserName(event.target.value)
-            }
-          ></InputControl>
+        //     onChange = {(event) => 
+        //       setUserName(event.target.value)
+        
+        //     }
+          ref = {nameRef}
+          ></InputControl2>
           <h2>Correo: </h2>
-          <InputControl
+          <InputControl2
             placeholder = {userEmail}
-            onChange ={(event)=>
-              setUserEmail(event.target.value)
-            }
-          ></InputControl>
+        //     onChange ={(event)=>
+        //       setUserEmail(event.target.value)
+        //     }
+        ref = {emailRef}
+          ></InputControl2>
           <h2>Juego favorito</h2>
-          <Survey
+          <Survey2
                 setvalues={setvalues}
                 defaultValue ={userFavoriteGame}
+                ref = {favoriteGameRef}
           />
           {/* <InputControl
             placeholder = {userFavoriteGame}
@@ -87,18 +125,22 @@ export default function Perfil() {
             }
           ></InputControl> */}
           <h2>Contraseña</h2>
-          <InputControl
+          <InputControl2
             placeholder = {userPassword}
-            onChange ={(event)=>
-              setUserPassword(event.target.value)
-            }
-          ></InputControl>
+        //     onChange ={(event)=>
+        //       setUserPassword(event.target.value)
+        //     }
+
+        ref = {passwordRef}
+          ></InputControl2>
           <div className={styles.containerBotones}>
             <button onClick = {logOut} className={styles.botonIzq}>Cerrar sesión</button>
-            <button onClick = {UpdateUserFunction(userid, userEmail, userFavoriteGame, userName)} className={styles.botonDer}>Guardar Cambios</button>
+            <button onClick = {update} className={styles.botonDer}>Guardar Cambios</button>
           </div>
         </div>
       </div>
     );
   }
 }
+
+// favoriteGameRef, emailRef, nameRef, passwordRef })
