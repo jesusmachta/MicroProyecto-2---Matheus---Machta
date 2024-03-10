@@ -8,6 +8,7 @@ import { collection,  where, query, getDocs } from "firebase/firestore";
 import { UserContext, useUser } from "../context/user";
 import { UpdateUserComponent } from "../controllers/usuarios";
 import Survey from "./Survey";
+import { UpdateUserFunction } from "../controllers/updateUser";
 
 export default function Perfil() {
   const userL = useUser(); 
@@ -47,10 +48,10 @@ export default function Perfil() {
     nav("/register"); 
   }
 
-  const handleUpdate = () => {
+//   const handleUpdate = () => {
         setUserFavoriteGame(values.favoriteGame); 
-    UpdateUserComponent({ id: userid, email: userEmail, userFavoriteGame,  name: userName, userL });
-  };
+//     UpdateUserComponent({ id: userid, email: userEmail, userFavoriteGame,  name: userName, userL });
+//   };
 
   if(datosCargados){
     return (
@@ -94,7 +95,7 @@ export default function Perfil() {
           ></InputControl>
           <div className={styles.containerBotones}>
             <button onClick = {logOut} className={styles.botonIzq}>Cerrar sesión</button>
-            <button onClick = {handleUpdate} className={styles.botonDer}>Guardar Cambios</button>
+            <button onClick = {UpdateUserFunction(userid, userEmail, userFavoriteGame, userName)} className={styles.botonDer}>Guardar Cambios</button>
           </div>
         </div>
       </div>
