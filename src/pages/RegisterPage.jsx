@@ -14,7 +14,7 @@ export default function Register() {
  
 
     const navigate = useNavigate();
-    const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "The Witcher 3: Wild Hunt" });
+    const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "The Witcher 3: Wild Hunt", subscriptions: [""] });
     const [errorMsg, setErrorMsg] = useState([]);
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false); 
     const defaultValue = "The Witcher 3: Wild Hunt"; 

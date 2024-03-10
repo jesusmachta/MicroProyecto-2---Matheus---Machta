@@ -1,4 +1,4 @@
-import {collection, addDoc} from "firebase/firestore"; 
+import {collection, addDoc, updateDoc} from "firebase/firestore"; 
 import {db} from "../firebase"; 
 
 export async function saveUser(user){
@@ -7,6 +7,7 @@ export async function saveUser(user){
         console.log(user); 
         const usuariosRef = collection(db, "Usuarios"); 
         await addDoc(usuariosRef, user); 
+        // await updateDoc(usuariosRef, {subscriptions: user.subscriptions}); 
         console.log("guardado con exito"); 
     }catch(e){
         console.error('Error al guardar el usuario: ', e); 
