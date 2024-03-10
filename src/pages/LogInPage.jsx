@@ -14,13 +14,13 @@ export function Login() {
   const [errorMsg, setErrorMsg] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const Iniciar = () => {
-    if (!values.email || !values.pass) {
+    if (!values.email || !values.password) {
         setErrorMsg("Datos incompletos");
         return;
     }
     setErrorMsg("");
     setSubmitButtonDisabled(true);
-    signInWithEmailAndPassword(auth, values.email, values.pass)
+    signInWithEmailAndPassword(auth, values.email, values.password)
         .then(() => {
             setSubmitButtonDisabled(false);
             navigate("/");

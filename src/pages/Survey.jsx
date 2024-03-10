@@ -3,7 +3,7 @@ import { getGamesTitle } from './GetGames';
 
 
 
-export default function Survey(){
+export default function Survey({setvalues}){
   const [titles, setTitles] = useState([]); 
   useEffect(() => {
     async function fetchTitles() {
@@ -13,9 +13,20 @@ export default function Survey(){
 
     fetchTitles();
   }, []);
+  const handleTitleChange=(event) =>{
+
+    setvalues((prev)=>({...prev, favoriteGame: event.target.value,})); 
+    // const selectedTitle = event.target.value;
+
+    // console.log(event.target.value) ; 
+
+    // setSelectedTitle=(selectedTitle); 
+    // const getTitle = [setSelectedTitle]; 
+    // getTitle(setSelectedTitle); 
+  };
 
   return (
-    <select>
+    <select onChange = {handleTitleChange}>
       {titles.map((title, index) => (
         <option key={index} value={title}>
           {title}

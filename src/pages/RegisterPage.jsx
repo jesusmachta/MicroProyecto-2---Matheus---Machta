@@ -7,34 +7,42 @@ import {auth } from "../firebase";
 import { GoogleLoginButton } from './GoogleLoginButton';
 import Survey from "./Survey"; 
 // import { getGamesTitleHTML, getGames } from './GetGames';
-
+import { saveUser } from './GuardarUsuarioDB';
 
 
 export default function Register() {
-    // const juegos = [" Catalina", "Jesus", "Luis"]
-    // const juegos = getGamesTitle();  
-    
-
-    // setJuegos(generateListGames(setJuegos)); 
+ 
 
     const navigate = useNavigate();
-    const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "" });
+    const [values, setvalues] = useState({ name: "", email: "", password: "",favoriteGame: "The Witcher 3: Wild Hunt" });
     const [errorMsg, setErrorMsg] = useState([]);
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false); 
+   
     const registro = () => {
-      if (!values.name || !values.email || !values.password) {
+      if (!values.name || !values.email || !values.password ) {
         setErrorMsg("Campos invalidos");
         return;
       }
       setErrorMsg("");
       setSubmitButtonDisabled(true);
-      createUserWithEmailAndPassword(auth, values.email, values.password)
+      // console.log(selectedTitle); 
+      // setvalues((prev) => ({
+      //   ...prev,
+      //   favoriteGame: selectedTitle,
+      // }));
+
+      createUserWithEmailAndPassword(auth, values.email, values.password, values.favoriteGame)
         .then(async (res) => {
           setSubmitButtonDisabled(false);
           const user = res.user;
           await updateProfile(user, {
             displayName: values.name,
+            
           });
+          console.log(values); 
+          saveUser(values); 
+           
+
           navigate("/");
         })
         .catch((err) => {
@@ -49,11 +57,14 @@ export default function Register() {
             displayName: values.name,
           };
           await updateProfile(user, userProfile);
-          console.log(user);
+          // console.log(user);
+          // saveUser(user); 
         } catch (error) {
           console.log(error);
         }
       };
+
+   
       
       const unsubscribe = auth.onAuthStateChanged((user) => {
         if (user) {
@@ -90,14 +101,15 @@ export default function Register() {
             }
           />
           <p> Ingrese su juego favorito: </p>
-            <Survey
-              onChange = {(event) =>
-                setvalues((prev) => ({...prev, favoriteGame: event.target.value}))
-              }
+            <Survey setvalues={setvalues}
+            
+              // onChange = {(event) =>
+              //   setvalues((prev) => ({...prev, favoriteGame: selectedTitle}))
+              // }
             ></Survey>
           <div className={styles.footer}>
             <b className={styles.error}>{errorMsg}</b>
-            <button onClick={registro} disabled={submitButtonDisabled}>
+            <button className = {styles.botonRegistro} onClick={registro} disabled={submitButtonDisabled}>
               Registrarse
             </button>
             <GoogleLoginButton></GoogleLoginButton>
@@ -111,3 +123,6 @@ export default function Register() {
     );
   }
 
+  // const handleSelection = (event) => { // Función para manejar la selección del usuario
+  //   setSelectedTitle(event.target.value);
+  // }
