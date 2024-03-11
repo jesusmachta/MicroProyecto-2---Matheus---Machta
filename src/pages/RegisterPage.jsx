@@ -7,8 +7,7 @@ import { auth } from "../firebase";
 import { GoogleLoginButton } from "./GoogleLoginButton";
 import Survey from "./Survey";
 import { saveUser } from "./GuardarUsuarioDB";
-import Swal from 'sweetalert2'
-
+import Swal from "sweetalert2";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -25,17 +24,17 @@ export default function Register() {
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   // const defaultValue = "The Witcher 3: Wild Hunt";
 
-  const mostrarAlert =() =>{
-    // Swal.fire('Registrado con éxito!', 'success'); 
+  const mostrarAlert = () => {
+    // Swal.fire('Registrado con éxito!', 'success');
     Swal.fire({
-      icon: 'success', 
-      title: 'Registro exitoso',
-      text: 'Usted fue registrado exitosamente',
+      icon: "success",
+      title: "Registro exitoso",
+      text: "Usted fue registrado exitosamente",
       showCancelButton: false,
       showCloseButton: true,
-      showConfirmButton: false
+      showConfirmButton: false,
     });
-  }
+  };
 
   const registro = () => {
     if (
@@ -68,15 +67,24 @@ export default function Register() {
         console.log(values);
 
         saveUser(values);
-        mostrarAlert(); 
+        mostrarAlert();
 
-        navigate("/");
+        navigate("/profile");
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);
         setErrorMsg(err.message);
       });
   };
+  [
+    navigate,
+    values.name,
+    values.lastname,
+    values.username,
+    values.email,
+    values.password,
+    values.favoriteGame,
+  ];
   useEffect(() => {
     const guardarPerfil = async (user) => {
       try {
@@ -101,8 +109,8 @@ export default function Register() {
   }, [navigate, values.name, values.lastname, values.username]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.innerBox}>
+    <div>
+      <div>
         <h1 className={styles.heading}>Registro</h1>
         <InputControl
           label="Nombre"
@@ -150,14 +158,14 @@ export default function Register() {
         <div className={styles.footer}>
           <b className={styles.error}>{errorMsg}</b>
           <button
-            className={styles.botonRegistro}
+            className={styles.botonRegistroo}
             onClick={registro}
             disabled={submitButtonDisabled}
           >
             Registrarse
           </button>
-          <GoogleLoginButton></GoogleLoginButton>
-          <button>
+          <GoogleLoginButton className={styles.botonRegistroo} />
+          <button className={styles.botonRegistroo}>
             <Link to="/login"> Iniciar sesión</Link>
           </button>
         </div>

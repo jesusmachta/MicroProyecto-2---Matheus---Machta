@@ -8,17 +8,24 @@
   font-weight: 700;
   font-size: 1 rem;
   color: rgb(51, 46, 46);
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 25%;
+  margin-top: 10px;
 }
 
 .container input {
   border-radius: 5px;
   border: 1px solid rgb(145, 140, 140);
   margin-right: 25px;
-  margin-left: 25px;
+  margin-left: 25%;
   height: 25px;
   padding-left: 15px;
   font-size: 17px;
-  background-color: rgba(255, 255, 235, 0.938);
+  background-color: rgb(255, 255, 235);
+  align-items: center;
+  width: 50%;
 }
 
 .container input:hover {

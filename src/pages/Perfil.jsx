@@ -85,7 +85,7 @@ export default function Perfil() {
 
   const logOut = () => {
     auth.signOut();
-    nav("/register");
+    nav("/login");
     mostrarAlert(
       "Se cerró exitosamente su sesión",
       "success",

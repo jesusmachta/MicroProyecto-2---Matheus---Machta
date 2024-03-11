@@ -1,13 +1,36 @@
-.button-google{
-    outline: none; 
-    border: none; 
-    background-color: beige; 
-    color: rgb(46, 43, 43); 
-    border-radius: 5px;
-    font-weight: bold; 
-    font-size: 1rem; 
-    padding: 10px 16px; 
-    width: 100%; 
-    transition: 100ms; 
-    cursor: pointer; 
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.button-google {
+  padding: 10px 20px;
+  background-color: #4285f4;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.button-google:hover {
+  background-color: #357ae8;
+}
+.botonRegistroo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+span {
+  margin-right: 35%;
 }

@@ -1,86 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap");
 
-.container{
-    height: 100%; 
-    min-height: 100vh; 
-    width: 100%; 
-    background: linear-gradient(to right, rgb(50, 147, 215), rgb(15, 188, 15));
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-}
-  
-.innerBox{
-    min-width: 480px; 
-    height: fit-content; 
-    width: fit-content; 
-    background-color: white;
-    box-shadow: 1px 1px 4px rgb(111, 105, 105); 
-    padding: 30px; 
-    border-radius: 10px;
-    display: flex; 
-    flex-direction: column; 
-    gap: 30px; 
-}
-  
-  .footer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .fotter .error{
-    font-weight: bold; 
-    font-size: 0.9rem; 
-    color: red; 
-    text-align: center; 
+.container {
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(to right, rgba(167, 218, 255, 0.818), #85ff85);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-button{
-    outline: none; 
-    border: none; 
-    background-color: rgb(133, 187, 133); 
-    color: rgb(46, 43, 43); 
-    border-radius: 5px;
-    font-weight: bold; 
-    font-size: 1rem; 
-    padding: 10px 16px; 
-    width: 100%; 
-    transition: 100ms; 
-    cursor: pointer;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
+.innerBox {
+  min-width: 500px;
+  height: auto;
+  width: auto;
+  background-color: white;
+  box-shadow: 1px 1px 4px rgb(111, 105, 105);
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-h1{
-    display: flex; 
-    justify-content: center;
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
-  .footer button:disabled {
-    background-color: gray !important;
-  }
-  
-  button:hover {
-    background-color: rgb(67, 172, 67);
-  }
-  
-  .footer p {
-    font-weight: 700;
-    color: #000;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .footer p span a {
-    font-weight: bold;
-    color: #fffeff;
-    letter-spacing: 1px;
-    font-size: 1rem;
-    text-decoration: none;
-  }
 
-  a{
-    text-decoration: none; 
-    color: black; 
+.fotter .error {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: red;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: rgb(133, 187, 133);
+  color: rgb(46, 43, 43);
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 16px;
+  width: 100%;
+  transition: 100ms;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.botonRegistroo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .botonRegistroo {
+    width: 30%;
+  }
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.footer button:disabled {
+  background-color: gray !important;
+}
+
+button:hover {
+  background-color: rgb(67, 172, 67);
+}
+
+.footer p {
+  font-weight: 700;
+  color: #000;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer p span a {
+  font-weight: bold;
+  color: #fffeff;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.googleButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100% !important; /* Ajusta esto según tus necesidades */
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
 }

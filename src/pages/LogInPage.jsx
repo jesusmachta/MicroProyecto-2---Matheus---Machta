@@ -1,11 +1,10 @@
-
 import styles from "./LogInPage.module.css";
-import { InputControl} from "./InputControl/InputControl";
+import { InputControl } from "./InputControl/InputControl";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState , useEffect } from "react";
-import {updateProfile } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { updateProfile } from "firebase/auth";
 import { GoogleSignUpButton } from "./GoogleSignUpButton";
 
 export function Login() {
@@ -15,20 +14,20 @@ export function Login() {
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const Iniciar = () => {
     if (!values.email || !values.password) {
-        setErrorMsg("Datos incompletos");
-        return;
+      setErrorMsg("Datos incompletos");
+      return;
     }
     setErrorMsg("");
     setSubmitButtonDisabled(true);
     signInWithEmailAndPassword(auth, values.email, values.password)
-        .then(() => {
-            setSubmitButtonDisabled(false);
-            navigate("/");
-        })
-        .catch((err) => {
-            setSubmitButtonDisabled(false);
-            setErrorMsg(err.message);
-        });
+      .then(() => {
+        setSubmitButtonDisabled(false);
+        navigate("/");
+      })
+      .catch((err) => {
+        setSubmitButtonDisabled(false);
+        setErrorMsg(err.message);
+      });
   };
   useEffect(() => {
     const guardarPerfil = async (user) => {
@@ -42,7 +41,7 @@ export function Login() {
         console.log(error);
       }
     };
-    
+
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         navigate("/");
@@ -52,8 +51,8 @@ export function Login() {
     return unsubscribe;
   }, [navigate, values.name]);
   return (
-    <div className={styles.container}>
-      <div className={styles.innerBox}>
+    <div>
+      <div>
         <h1 className={styles.heading}>Login</h1>
         <InputControl
           label="Email"
@@ -71,13 +70,15 @@ export function Login() {
         />
         <div className={styles.footer}>
           <b className={styles.error}>{errorMsg}</b>
-          <button onClick={Iniciar} disabled={submitButtonDisabled}>Iniciar</button>
+          <button onClick={Iniciar} disabled={submitButtonDisabled}>
+            Iniciar
+          </button>
           <GoogleSignUpButton></GoogleSignUpButton>
           <p>
             <div>
-            <button>
-              <Link to="/register"> ¡Registrarte!</Link>
-            </button>
+              <button>
+                <Link to="/register"> ¡Registrarte!</Link>
+              </button>
             </div>
           </p>
         </div>
@@ -86,4 +87,3 @@ export function Login() {
   );
 }
 export default Login;
-

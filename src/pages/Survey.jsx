@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getGamesTitle } from "./GetGames";
-import styles from "./Survey2.module.css"; // Asegúrate de importar el archivo CSS correcto
+import styles from "./Survey.module.css"; // Asegúrate de importar el archivo CSS correcto
 
 export default function Survey({ setvalues, defaultValue }) {
   const [titles, setTitles] = useState([]);
