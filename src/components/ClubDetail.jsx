@@ -71,14 +71,18 @@ export default function ClubDetail({ club }) {
     fetchData();
   }, [userid]);
 
+
+
   const update = () => {
     console.log("eNTRO EN EL UPDATE PARA AGREGAR SUB");
     if (datosCargados) {
       addSubscriptionFunction(userid, club.nombre);
       console.log("Unirse al club");
+       
     } else {
       console.log("Los datos todavía no estan cargados");
     }
+    
   };
 
   const leave = () => {
@@ -86,9 +90,12 @@ export default function ClubDetail({ club }) {
     if (datosCargados) {
       removeSubscriptionFunction(userid, club.nombre);
       console.log("Salir del club");
+ 
+      
     } else {
       console.log("Los datos todavía no estan cargados");
     }
+    
   };
 
   if (selectedVideojuego) {

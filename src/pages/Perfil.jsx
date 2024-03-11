@@ -8,6 +8,7 @@ import { collection, where, query, getDocs } from "firebase/firestore";
 import { useUser } from "../context/user";
 import Survey2 from "./Surevy2";
 import { UpdateUserFunction } from "../controllers/updateUser";
+import SuscriptionProfile from "../components/Suscriptions";
 
 export default function Perfil() {
   const userL = useUser();
@@ -20,6 +21,7 @@ export default function Perfil() {
   const [userFavoriteGame, setUserFavoriteGame] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const [datosCargados, setDatosCargados] = useState(false);
+  const [suscriptions , setSuscriptions] = useState([]); 
   const [setvalues] = useState({
     name: "",
     lastname: "",
@@ -54,14 +56,19 @@ export default function Perfil() {
         querySnapshot.forEach((doc) => {
           setUserid(doc.id); //la info que esta en el doc
           setUserName(doc.data().name);
+          console.log(userName);  
           setUserLastName(doc.data().lastName);
           setUserUserName(doc.data().username);
           setUserFavoriteGame(doc.data().favoriteGame);
+          setSuscriptions(doc.data().subscriptions);
+          console.log("Suscripciones: "); 
+          console.log(suscriptions);  
           console.log("juego favorito");
           console.log(userFavoriteGame);
           console.log(typeof userFavoriteGame);
           setUserPassword("*******");
           setDatosCargados(true);
+          console.log("DATOS CARGADOS"); 
         });
       } catch (error) {
         console.log("Error buscando el doc: ", error);
@@ -161,6 +168,11 @@ export default function Perfil() {
             readOnly={true}
             ref={passwordRef}
           ></InputControl2>
+          <div className="containerCartasPerfil">
+            <h2 style = {{textAlign: 'center'}}>Suscripciones</h2>
+            <SuscriptionProfile subscribedClubs={suscriptions}></SuscriptionProfile>
+
+          </div>
           <div className={styles.containerBotones}>
             <button onClick={logOut} className={styles.botonIzq}>
               Cerrar sesión
