@@ -76,7 +76,7 @@ export function Login() {
           <p>
             <div>
               <button>
-                <Link to="/register"> ¡Registrarte!</Link>
+                <Link to="/"> ¡Registrarte!</Link>
               </button>
             </div>
           </p>
