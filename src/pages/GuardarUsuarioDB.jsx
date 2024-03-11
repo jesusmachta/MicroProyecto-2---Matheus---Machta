@@ -9,7 +9,7 @@ export async function saveUser(user) {
       email: user.email,
       favoriteGame: user.favoriteGame,
       name: user.name,
-      subscriptions: [" "],
+      subscriptions: user.subscriptions,
       lastName: user.lastname,
       username: user.username,
     };

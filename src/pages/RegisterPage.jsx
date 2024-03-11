@@ -17,7 +17,7 @@ export default function Register() {
     email: "",
     password: "",
     favoriteGame: "The Witcher 3: Wild Hunt",
-    subscriptions: [""],
+    subscriptions: "",
   });
   const [errorMsg, setErrorMsg] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
