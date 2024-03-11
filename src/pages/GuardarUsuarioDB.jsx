@@ -10,8 +10,8 @@ export async function saveUser(user) {
       favoriteGame: user.favoriteGame,
       name: user.name,
       subscriptions: "",
-      lastName: "",
-      username: "",
+      lastName: user.lastName,
+      username: user.username,
     };
     const usuariosRef = collection(db, "Usuarios");
     await addDoc(usuariosRef, userc);

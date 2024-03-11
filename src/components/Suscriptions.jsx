@@ -2,6 +2,7 @@ import { useState } from "react";
 import { removeSubscriptionFunction } from "../controllers/addSubscription";
 import Swal from "sweetalert2";
 
+
 export default function SuscriptionProfile({ subscribedClubs, idUser }) {
   const [clubs, setClubs] = useState(subscribedClubs);
   //   const handleLeaveClubs = clubs.filter((club) => club.id !== clubId);
@@ -23,6 +24,8 @@ export default function SuscriptionProfile({ subscribedClubs, idUser }) {
     removeSubscriptionFunction(idUser, clubnombre);
     console.log("Salir del club");
     mostrarAlert();
+    
+
   };
   if (subscribedClubs !== "") {
     return (

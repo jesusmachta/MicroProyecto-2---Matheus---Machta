@@ -5,7 +5,7 @@ import {db} from '../firebase';
 import { updateEmail, updateProfile, sendEmailVerification } from "firebase/auth";
 import Swal from 'sweetalert2'; 
 
-export async function UpdateUserFunction({ id, email, favoriteGame, name,  userL, favoriteGameRef, emailRef, nameRef }) {
+export async function UpdateUserFunction({ id, email, favoriteGame, name,  userL, favoriteGameRef, emailRef, nameRef, username, usernameRef }) {
 
   const mostrarAlert =(text, icon, title) =>{
     // Swal.fire('Registrado con éxito!', 'success'); 
@@ -37,11 +37,17 @@ export async function UpdateUserFunction({ id, email, favoriteGame, name,  userL
         console.log(name); 
       }
 
+      if(usernameRef !== null && usernameRef.length>0){
+        username = usernameRef; 
+        
+      }
+
     
       await updateDoc(doc(usersCollection, id),{
           email, 
           favoriteGame, 
           name, 
+          username, 
            
       }); 
       window.location.reload(); 

@@ -13,7 +13,7 @@ export default function Register() {
   const navigate = useNavigate();
   const [values, setvalues] = useState({
     name: "",
-    lastname: "",
+    lastName: "",
     username: "",
     email: "",
     password: "",
@@ -39,7 +39,7 @@ export default function Register() {
   const registro = () => {
     if (
       !values.name ||
-      !values.lastname ||
+      !values.lastName ||
       !values.username ||
       !values.email ||
       !values.password
@@ -61,7 +61,7 @@ export default function Register() {
         const user = res.user;
         await updateProfile(user, {
           displayName: values.name,
-          displayLastname: values.lastname,
+          displayLastname: values.lastName,
           displayUsername: values.username,
         });
         console.log(values);
@@ -79,7 +79,7 @@ export default function Register() {
   [
     navigate,
     values.name,
-    values.lastname,
+    values.lastName,
     values.username,
     values.email,
     values.password,
@@ -90,7 +90,7 @@ export default function Register() {
       try {
         const userProfile = {
           displayName: values.name,
-          displayLastname: values.lastname,
+          displayLastname: values.lastName,
           displayUsername: values.username,
         };
         await updateProfile(user, userProfile);
@@ -106,7 +106,7 @@ export default function Register() {
       }
     });
     return unsubscribe;
-  }, [navigate, values.name, values.lastname, values.username]);
+  }, [navigate, values.name, values.lastName, values.username]);
 
   return (
     <div>
@@ -123,7 +123,7 @@ export default function Register() {
           label="Apellido"
           placeholder="Ingrese un apellido"
           onChange={(event) =>
-            setvalues((prev) => ({ ...prev, lastname: event.target.value }))
+            setvalues((prev) => ({ ...prev, lastName: event.target.value }))
           }
         />
         <InputControl

@@ -155,12 +155,7 @@ export default function Perfil() {
             ref={usernameRef}
             readOnly={false}
           ></InputControl2>
-          <h2>*Nombre: </h2>
-          <InputControl2
-            placeholder={userName}
-            ref={nameRef}
-            readOnly={false}
-          ></InputControl2>
+          
           <h2>Correo: </h2>
           <InputControl2
             placeholder={userEmail}

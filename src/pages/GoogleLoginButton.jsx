@@ -11,7 +11,17 @@ export function GoogleLoginButton() {
       const userCredential = result.user;
       // datos del usuario:
       const userEmail = userCredential.email;
-      const name = userCredential.displayName;
+      const nameDisplay = userCredential.displayName;
+      let name = ""; 
+      let lastname = ""; 
+      if(nameDisplay){
+        const parts = nameDisplay.split(' '); 
+        if(parts.length>0){
+          name = parts.shift(); 
+        }if(parts.length>0){
+          lastname = parts.shift(); 
+        }
+      }
       const password = "********";
       const favoriteGame = "The Witcher 3: Wild Hunt";
       const usuario = {
@@ -19,7 +29,7 @@ export function GoogleLoginButton() {
         favoriteGame: favoriteGame,
         name: name,
         subscriptions: [""],
-        lastName: "",
+        lastName: lastname,
         username: "",
       };
       saveUser(usuario);
