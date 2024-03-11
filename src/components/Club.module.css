@@ -7,13 +7,23 @@
 .card {
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 15px;
-  margin: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 35px;
+  margin: 35px;
+  margin-bottom: 40px;
+  box-shadow: 10px 15px 10px 10px rgba(255, 0, 0, 0.2);
   display: flex;
   width: 300px;
   height: auto;
-  background: linear-gradient(to right, rgb(170, 220, 255), rgb(170, 254, 170));
+  background: linear-gradient(
+    to right,
+    rgba(0, 195, 255, 0.32),
+    rgba(0, 255, 0, 0.16)
+  );
+}
+
+.card:hover {
+  box-shadow: 10px 15px 10px 10px rgb(254, 140, 140);
+  transform: scale(1.2);
 }
 
 .card img {
@@ -24,8 +34,9 @@
 }
 
 .titulo {
-  font-size: 25px;
+  font-size: 5px;
   font-weight: bold;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
 }
 
 .genero,
@@ -34,24 +45,34 @@
 }
 
 .root {
-  background: linear-gradient(to bottom, rgb(90, 84, 84), rgb(255, 156, 156));
+  background: rgb(230, 196, 217);
   min-height: 100vh;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
 }
+
 .search {
-  width: 50%;
-  padding: 10px;
+  width: 40%;
+  padding: 8px;
   font-size: 1.5em;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
   margin: 20px auto 0;
   display: block;
+  border-radius: 15px;
+  border-width: 20px, solid;
+  border-color: rgb(255, 0, 0);
+  padding-left: 20px;
 }
 
 .nombre {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
 }
 
 .descripcion {
-  font-size: 15px;
+  font-size: 20px;
+  padding-top: 10px;
   text-align: center;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
 }

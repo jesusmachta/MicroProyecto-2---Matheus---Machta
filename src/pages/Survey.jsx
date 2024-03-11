@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { getGamesTitle } from "./GetGames";
+import styles from "./Survey2.module.css"; // Asegúrate de importar el archivo CSS correcto
 
 export default function Survey({ setvalues, defaultValue }) {
   const [titles, setTitles] = useState([]);
 
-  // Cuando el componente se monta, obtiene los títulos de los juegos
   useEffect(() => {
     async function fetchTitles() {
       const response = await getGamesTitle();
@@ -14,19 +14,26 @@ export default function Survey({ setvalues, defaultValue }) {
     fetchTitles();
   }, []);
 
-  // Cuando el usuario selecciona un juego, actualiza el estado `favoriteGame` en `Register`
   const handleTitleChange = (event) => {
     setvalues((prev) => ({ ...prev, favoriteGame: event.target.value }));
   };
 
-  // Renderiza un dropdown con los títulos de los juegos
   return (
-    <select onChange={handleTitleChange} value={defaultValue}>
-      {titles.map((title, index) => (
-        <option key={index} value={title}>
-          {title}
-        </option>
-      ))}
-    </select>
+    <div className={styles.surveyContainer}>
+      {" "}
+      {/* Aplica el estilo al contenedor */}
+      <select
+        className={styles.dropdown}
+        onChange={handleTitleChange}
+        value={defaultValue}
+      >
+        {" "}
+        {titles.map((title, index) => (
+          <option key={index} value={title}>
+            {title}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }

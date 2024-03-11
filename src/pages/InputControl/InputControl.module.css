@@ -1,26 +1,30 @@
-.container{
-    display: flex; 
-    flex-direction: column; 
-    gap: 8px; 
-
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.container label{
-    font-weight: 700; 
-    font-size: 1 rem; 
-    color: rgb(51, 46, 46); 
-
+.container label {
+  font-weight: 700;
+  font-size: 1 rem;
+  color: rgb(51, 46, 46);
 }
 
-.container input{
-    border-radius: 5px; 
-    border: 1px solid rgb(145, 140, 140); 
+.container input {
+  border-radius: 5px;
+  border: 1px solid rgb(145, 140, 140);
+  margin-right: 25px;
+  margin-left: 25px;
+  height: 25px;
+  padding-left: 15px;
+  font-size: 17px;
+  background-color: rgb(255, 255, 235);
 }
 
-.container input:hover{
-    border-color: rgb(190, 184, 184); 
+.container input:hover {
+  border-color: rgb(255, 0, 0);
 }
 
-.container input:focus{
-    border-color: rgb(0, 119, 255); 
+.container input:focus {
+  border-color: rgb(255, 0, 0);
 }

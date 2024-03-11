@@ -1,53 +1,68 @@
-.root {
-  background: linear-gradient(to bottom,  rgb(90, 84, 84), rgb(255, 156, 156));
-  min-height: 100vh;
-  padding: 20px;
-}
-
 .cards-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
+.root {
+  background: rgb(230, 196, 217);
+  min-height: 100vh;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
+}
 
 .card {
-  border: 3px solid #ddd;
+  border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 15px;
-  margin: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 35px;
+  margin: 35px;
+  margin-bottom: 40px;
+  box-shadow: 10px 15px 10px 10px rgba(255, 0, 0, 0.2);
   display: flex;
-  width: auto; 
-  height: auto; 
-  background: linear-gradient(to right, rgb(170, 220, 255), rgb(170, 254, 170));
+  width: 300px;
+  height: auto;
+  background: linear-gradient(
+    to right,
+    rgba(0, 195, 255, 0.32),
+    rgba(0, 255, 0, 0.16)
+  );
+}
+
+.card:hover {
+  box-shadow: 10px 15px 10px 10px rgb(254, 140, 140);
+  transform: scale(1.2);
 }
 
 .card img {
-  width: 320px; 
-  height: 370px; 
+  width: 320px;
+  height: 370px;
   object-fit: cover;
   border-radius: 10px;
   margin: auto;
 }
 
 .nombreClub {
-  font-size: 55px; 
+  color: black;
+  font-size: 55px;
   font-weight: bold;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
 }
 
 .descripcionClub {
-  font-size: 25px; 
+  font-size: 35px;
+  color: rgb(67, 67, 67);
   font-weight: bold;
   align-items: center;
   text-align: center;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
 }
 
-p{
-  font-size: 18px; 
+p {
+  font-size: 29px;
+  color: rgb(67, 67, 67);
   font-weight: bold;
   align-items: center;
   text-align: center;
+  font-family: "Lucida Console" bold, "Courier New", monospace;
 }
 
 .joinButton {
@@ -55,14 +70,35 @@ p{
   width: 200px;
   height: 50px;
   margin: 20px auto;
-  background-color: #90ff58;
-  color: white;
+  background-color: #d1f2f7;
+  color: rgb(0, 0, 0);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .joinButton:hover {
-  background: linear-gradient(to right, rgb(170, 220, 255), rgb(170, 254, 170));
+  background: white;
+  transform: scale(1.2);
+}
+
+.leaveButton {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 20px auto;
+  background-color: #d1f2f7;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.leaveButton:hover {
+  background: white;
+  transform: scale(1.2);
 }

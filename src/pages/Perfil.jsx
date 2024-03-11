@@ -9,7 +9,7 @@ import { useUser } from "../context/user";
 import Survey2 from "./Surevy2";
 import { UpdateUserFunction } from "../controllers/updateUser";
 import SuscriptionProfile from "../components/Suscriptions";
-import Swal from 'sweetalert2'; 
+import Swal from "sweetalert2";
 
 export default function Perfil() {
   const userL = useUser();
@@ -22,7 +22,7 @@ export default function Perfil() {
   const [userFavoriteGame, setUserFavoriteGame] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const [datosCargados, setDatosCargados] = useState(false);
-  const [suscriptions , setSuscriptions] = useState([]); 
+  const [suscriptions, setSuscriptions] = useState([]);
   const [setvalues] = useState({
     name: "",
     lastname: "",
@@ -30,17 +30,17 @@ export default function Perfil() {
     email: "",
     favoriteGame: "The Witcher 3: Wild Hunt",
   });
-  const mostrarAlert =(text, icon, title) =>{
-    // Swal.fire('Registrado con éxito!', 'success'); 
+  const mostrarAlert = (text, icon, title) => {
+    // Swal.fire('Registrado con éxito!', 'success');
     Swal.fire({
-      icon: icon, 
+      icon: icon,
       title: title,
       text: text,
       showCancelButton: false,
       showCloseButton: true,
-      showConfirmButton: false
+      showConfirmButton: false,
     });
-  }
+  };
 
   const favoriteGameRef = useRef();
   const nameRef = useRef();
@@ -48,12 +48,6 @@ export default function Perfil() {
   const usernameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-
-  //   const handleSaveChanges =()=>{
-  //         setUserFavoriteGame(values.favoriteGame);
-  //         UpdateUserFunction(userid, userEmail, userFavoriteGame, userName);
-
-  //   }
 
   useEffect(() => {
     if (userL) {
@@ -68,19 +62,19 @@ export default function Perfil() {
         querySnapshot.forEach((doc) => {
           setUserid(doc.id); //la info que esta en el doc
           setUserName(doc.data().name);
-          console.log(userName);  
+          console.log(userName);
           setUserLastName(doc.data().lastName);
           setUserUserName(doc.data().username);
           setUserFavoriteGame(doc.data().favoriteGame);
           setSuscriptions(doc.data().subscriptions);
-          console.log("Suscripciones: "); 
-          console.log(suscriptions);  
+          console.log("Suscripciones: ");
+          console.log(suscriptions);
           console.log("juego favorito");
           console.log(userFavoriteGame);
           console.log(typeof userFavoriteGame);
           setUserPassword("*******");
           setDatosCargados(true);
-          console.log("DATOS CARGADOS"); 
+          console.log("DATOS CARGADOS");
         });
       } catch (error) {
         console.log("Error buscando el doc: ", error);
@@ -92,8 +86,11 @@ export default function Perfil() {
   const logOut = () => {
     auth.signOut();
     nav("/register");
-    mostrarAlert("Se cerró exitosamente su sesión", 'success', 'Sesión cerrada exitosamente'); 
-
+    mostrarAlert(
+      "Se cerró exitosamente su sesión",
+      "success",
+      "Sesión cerrada exitosamente"
+    );
   };
 
   const update = () => {
@@ -133,13 +130,13 @@ export default function Perfil() {
 
   if (datosCargados) {
     return (
-      <div className={styles.container}>
+      <div>
         <Navbar />
         <div>
           <h1>TU PERFIL</h1>
         </div>
         <h2 className={styles.editables}>Campos editables*</h2>
-        <div className={styles.containerInfo}>
+        <div>
           <h2>*Nombre: </h2>
           <InputControl2
             placeholder={userName}
@@ -183,17 +180,14 @@ export default function Perfil() {
             ref={passwordRef}
           ></InputControl2>
           <div className="containerCartasPerfil">
-            {/* <h2 style = {{textAlign: 'center'}}>Suscripciones</h2> */}
-            <SuscriptionProfile  subscribedClubs= {suscriptions} idUser={userid}></SuscriptionProfile>
-
+            <SuscriptionProfile
+              subscribedClubs={suscriptions}
+              idUser={userid}
+            ></SuscriptionProfile>
           </div>
           <div className={styles.containerBotones}>
-            <button onClick={logOut} className={styles.botonIzq}>
-              Cerrar sesión
-            </button>
-            <button onClick={update} className={styles.botonDer}>
-              Guardar Cambios
-            </button>
+            <button onClick={logOut}>Cerrar sesión</button>
+            <button onClick={update}>Guardar Cambios</button>
           </div>
         </div>
       </div>
