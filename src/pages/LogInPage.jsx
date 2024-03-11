@@ -22,7 +22,7 @@ export function Login() {
     signInWithEmailAndPassword(auth, values.email, values.password)
       .then(() => {
         setSubmitButtonDisabled(false);
-        navigate("/");
+        navigate("/profile");
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);
