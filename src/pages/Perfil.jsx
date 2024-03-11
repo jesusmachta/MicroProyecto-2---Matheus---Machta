@@ -170,7 +170,7 @@ export default function Perfil() {
           ></InputControl2>
           <div className="containerCartasPerfil">
             <h2 style = {{textAlign: 'center'}}>Suscripciones</h2>
-            <SuscriptionProfile subscribedClubs={suscriptions}></SuscriptionProfile>
+            <SuscriptionProfile  subscribedClubs= {suscriptions} idUser={userid}></SuscriptionProfile>
 
           </div>
           <div className={styles.containerBotones}>
