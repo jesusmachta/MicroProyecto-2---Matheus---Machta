@@ -31,7 +31,6 @@ const Survey2 = forwardRef(({ setvalues, defaultValue }, ref) => {
         ref={ref}
       >
         {" "}
-        {/* Aplica el estilo al dropdown */}
         {titles.map((title, index) => (
           <option key={index} value={title}>
             {title}

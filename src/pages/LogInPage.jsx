@@ -33,8 +33,7 @@ export function Login() {
     const guardarPerfil = async (user) => {
       try {
         const userProfile = {
-          displayName: values.name, // Puedes guardar el nombre que ingresó el usuario durante el registro
-          // Puedes agregar más campos para guardar en el perfil del usuario según tus necesidades
+          displayName: values.name,
         };
         await updateProfile(user, userProfile);
       } catch (error) {

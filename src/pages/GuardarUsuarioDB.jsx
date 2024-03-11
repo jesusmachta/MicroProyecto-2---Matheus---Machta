@@ -15,7 +15,6 @@ export async function saveUser(user) {
     };
     const usuariosRef = collection(db, "Usuarios");
     await addDoc(usuariosRef, userc);
-    // await updateDoc(usuariosRef, {subscriptions: user.subscriptions});
     console.log("guardado con exito");
   } catch (e) {
     console.error("Error al guardar el usuario: ", e);

@@ -113,7 +113,7 @@ a {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100% !important; /* Ajusta esto según tus necesidades */
+  width: 100% !important;
 }
 
 .buttonContainer {

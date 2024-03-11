@@ -22,10 +22,8 @@ export default function Register() {
   });
   const [errorMsg, setErrorMsg] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
-  // const defaultValue = "The Witcher 3: Wild Hunt";
 
   const mostrarAlert = () => {
-    // Swal.fire('Registrado con éxito!', 'success');
     Swal.fire({
       icon: "success",
       title: "Registro exitoso",

@@ -1,5 +1,4 @@
 import styles from "./InputControl2.module.css";
-
 export function InputControl(props) {
   return (
     <div className={styles.container}>

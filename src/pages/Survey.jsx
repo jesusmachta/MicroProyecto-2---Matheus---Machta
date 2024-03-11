@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getGamesTitle } from "./GetGames";
-import styles from "./Survey.module.css"; // Asegúrate de importar el archivo CSS correcto
+import styles from "./Survey.module.css";
 
 export default function Survey({ setvalues, defaultValue }) {
   const [titles, setTitles] = useState([]);
@@ -21,7 +21,6 @@ export default function Survey({ setvalues, defaultValue }) {
   return (
     <div className={styles.surveyContainer}>
       {" "}
-      {/* Aplica el estilo al contenedor */}
       <select
         className={styles.dropdown}
         onChange={handleTitleChange}

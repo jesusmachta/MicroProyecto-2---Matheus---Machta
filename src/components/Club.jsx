@@ -45,7 +45,6 @@ export default function Card() {
               className={styles.card}
               onClick={() => setSelectedClub(club)}
             >
-              {/* <img src={`/${club.id}.png`} alt={club.nombre} /> */}
               <div>
                 <div className={styles.nombre}>{club.nombre}</div>
                 <div className={styles.descripcion}>{club.descripcion}</div>
