@@ -19,6 +19,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
+import Swal from 'sweetalert2'; 
 
 export default function ClubDetail({ club }) {
   const userL = useUser();
@@ -28,6 +29,18 @@ export default function ClubDetail({ club }) {
   const [datosCargados, setDatosCargados] = useState(false);
   const [userEmail, setUserEmail] = useState(null);
   const [userSubscriptions, setUserSubscriptions] = useState([]);
+
+  const mostrarAlert =(text, icon, title) =>{
+    // Swal.fire('Registrado con éxito!', 'success'); 
+    Swal.fire({
+      icon: icon, 
+      title: title,
+      text: text,
+      showCancelButton: false,
+      showCloseButton: true,
+      showConfirmButton: false
+    });
+  }
 
   useEffect(() => {
     if (userL) {
@@ -76,6 +89,7 @@ export default function ClubDetail({ club }) {
     if (datosCargados) {
       addSubscriptionFunction(userid, club.nombre);
       console.log("Unirse al club");
+      mostrarAlert("Se suscribió exitosamente al grupo",'success', 'Suscripción exitosa' ); 
     } else {
       console.log("Los datos todavía no estan cargados");
     }
@@ -86,6 +100,7 @@ export default function ClubDetail({ club }) {
     if (datosCargados) {
       removeSubscriptionFunction(userid, club.nombre);
       console.log("Salir del club");
+      mostrarAlert("Se salió del grupo exitosamente", 'success', 'Desuscripción exitosa' ); 
     } else {
       console.log("Los datos todavía no estan cargados");
     }

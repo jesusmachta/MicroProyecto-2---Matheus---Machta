@@ -7,6 +7,8 @@ import { auth } from "../firebase";
 import { GoogleLoginButton } from "./GoogleLoginButton";
 import Survey from "./Survey";
 import { saveUser } from "./GuardarUsuarioDB";
+import Swal from 'sweetalert2'
+
 
 export default function Register() {
   const navigate = useNavigate();
@@ -22,6 +24,18 @@ export default function Register() {
   const [errorMsg, setErrorMsg] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   // const defaultValue = "The Witcher 3: Wild Hunt";
+
+  const mostrarAlert =() =>{
+    // Swal.fire('Registrado con éxito!', 'success'); 
+    Swal.fire({
+      icon: 'success', 
+      title: 'Registro exitoso',
+      text: 'Usted fue registrado exitosamente',
+      showCancelButton: false,
+      showCloseButton: true,
+      showConfirmButton: false
+    });
+  }
 
   const registro = () => {
     if (
@@ -54,6 +68,7 @@ export default function Register() {
         console.log(values);
 
         saveUser(values);
+        mostrarAlert(); 
 
         navigate("/");
       })

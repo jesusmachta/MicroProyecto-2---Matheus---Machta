@@ -9,6 +9,7 @@ import { useUser } from "../context/user";
 import Survey2 from "./Surevy2";
 import { UpdateUserFunction } from "../controllers/updateUser";
 import SuscriptionProfile from "../components/Suscriptions";
+import Swal from 'sweetalert2'; 
 
 export default function Perfil() {
   const userL = useUser();
@@ -29,6 +30,17 @@ export default function Perfil() {
     email: "",
     favoriteGame: "The Witcher 3: Wild Hunt",
   });
+  const mostrarAlert =(text, icon, title) =>{
+    // Swal.fire('Registrado con éxito!', 'success'); 
+    Swal.fire({
+      icon: icon, 
+      title: title,
+      text: text,
+      showCancelButton: false,
+      showCloseButton: true,
+      showConfirmButton: false
+    });
+  }
 
   const favoriteGameRef = useRef();
   const nameRef = useRef();
@@ -80,6 +92,8 @@ export default function Perfil() {
   const logOut = () => {
     auth.signOut();
     nav("/register");
+    mostrarAlert("Se cerró exitosamente su sesión", 'success', 'Sesión cerrada exitosamente'); 
+
   };
 
   const update = () => {
@@ -169,7 +183,7 @@ export default function Perfil() {
             ref={passwordRef}
           ></InputControl2>
           <div className="containerCartasPerfil">
-            <h2 style = {{textAlign: 'center'}}>Suscripciones</h2>
+            {/* <h2 style = {{textAlign: 'center'}}>Suscripciones</h2> */}
             <SuscriptionProfile  subscribedClubs= {suscriptions} idUser={userid}></SuscriptionProfile>
 
           </div>
